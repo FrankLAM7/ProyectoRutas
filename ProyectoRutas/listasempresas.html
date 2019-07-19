@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-w6tc0TXjTUnYHwVwGgnYyV12wbRoJQo9iMlC2KdkdmVvntGgzT9jvqNEF/uKaF4m" crossorigin="anonymous">
+    <title>Lista de Empresas</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        #mapa{
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <table class="table table-hover">
+            <tbody>
+              <tr class="table-active">
+                <th><pre>                    </pre></th>
+                <td><pre>                    </pre></td>
+                <td style="text-align: right;"><strong>correo@gmail.com</strong></td>
+                <td><button class="btn btn-info">Cerrar Sesion</button></td>
+              </tr>
+              </tbody>
+              </table>
+    </header>
+
+    <main class="container">
+        <h1 class="text-center mt-3">Listado de Empresas</h1>
+        <div class="row">
+            <!-- Lista de empresas -->
+            <section class="col-md-4">
+                <ul class="list-group" id="listaEmpresas">
+                    
+                </ul>
+            </section>
+            <!-- Mapa de ruta de la empresa -->
+            <section class="col-md-8">
+                <div class="row">
+                    <div id="mapa" class="col-sm-10">
+    
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <div class="col-sm-12" style="background-color: #F26419">IDA</div>
+                        <div class="col-sm-12" style="background-color: #86bbd8" >VUELTA</div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- script minimo necesario para usar firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <!-- script para conectarse a la base de datos en tiempo real -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+    <!-- script de autenticación para FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF6h6iV5debP_hJeE4GVWWArYEgNdiahc"></script>
+    <script src="./js/notify.js"></script>
+    <script src="./js/listasempresas.js" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
+
+</body>
+<div class="modal fade" id="modalCrearCuenta">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off" class="row" id="frmCrearCuenta">
+                    <div class="form-group col-md-12">
+                        <label for="inputCrearEmail">Correo Electronico: </label>
+                        <input type="email" id="inputCrearEmail" name="inputCrearEmail" class="form-control"
+                            placeholder="Ejm.: fandia@gmail.com">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputCrearPassword1">Contraseña: </label>
+                        <input type="password" id="inputCrearPassword1" name="inputCrearPassword1" class="form-control"
+                            placeholder="Ingrese Contraseña">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputCrearPassword2">Repita la Contraseña: </label>
+                        <input type="password" id="inputCrearPassword2" name="inputCrearPassword2" class="form-control"
+                            placeholder="Ingrese Contraseña">
+                        <small id="helpPassword" class="form-text text-muted" hidden>..</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnCrearCuenta">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalIniciarSesion">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Iniciar Sesion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form autocomplete="off" class="row">
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail">Correo Electronico: </label>
+                        <input type="email" id="inputEmail" name="inputEmail" class="form-control"
+                            placeholder="Ejm.: fandia@gmail.com">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputPassword">Contraseña: </label>
+                        <input type="password" id="inputPassword" name="inputPassword" class="form-control"
+                            placeholder="Ingrese Contraseña">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnIngresar">Iniciar Sesion</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>
