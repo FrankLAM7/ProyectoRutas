@@ -17,7 +17,7 @@ window.onload = () => {
           type: "success",
           title: "Se inicio la sesion",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1000
         });
       })
       .catch(() => {
@@ -26,17 +26,14 @@ window.onload = () => {
           type: "error",
           title: "Error",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1000
         });
       });
   };
 
   let verificarSesion = () => {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        
-      } else {
-      }
+    firebase.auth().onAuthStateChanged(function() {
+
     });
   };
   verificarSesion();
