@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  </head>
+
+  <body>
+
+    <form action="index.html" class="login-form">
+      <h1>Login</h1>
+
+      <div class="txtb">
+        <input  id="#inputEmail" type="text">
+        <span data-placeholder="Usuario"></span>
+      </div>
+
+      <div class="txtb">
+        <input  id=#inputPassword" type="password">
+        <span data-placeholder="Contraseña"></span>
+      </div>
+
+      <input  class="btnIniciarSesion" type="submit" class="logbtn" value="Ingresar">
+
+      <div class="bottom-text">
+        Aun sin cuenta? <a href="#">Crea una </a>
+      </div>
+
+    </form>
+
+    <script type="text/javascript">
+      $(".txtb input").on("focus", function () {
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur", function () {
+        if ($(this).val() == "")
+          $(this).removeClass("focus");
+      });
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+    <script src="./index.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+  </body>
+
+</html>
