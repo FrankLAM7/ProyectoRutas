@@ -31,7 +31,7 @@ span{
 input{
     border: 0px !important;
     border-bottom: 2px solid blue !important;
-    background-color: rgba(6, 6, 214, 0.164) !important;
+    /* background-color: rgba(6, 6, 214, 0.164) !important; */
 }
 
 /* css file-input */
@@ -158,3 +158,11 @@ body {
     border: 0;
     transition: all .2s ease;
   }
+
+#map_ida, #map_vuelta{
+    border-radius: 10%;
+}
+
+#save{
+    border-radius: 10%;
+}
