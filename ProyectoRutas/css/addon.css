@@ -14,3 +14,22 @@ html, body, form {
     margin: 0;
     padding: 0;
 }
+
+span{
+    font-size: 25px !important;
+    /* border-radius: 5%; */
+}
+
+#file{
+    width: 100%;
+}
+
+.row{
+    background-color: rgba(253, 253, 253, 0.52);
+}
+
+input{
+    border: 0px !important;
+    border-bottom: 2px solid blue !important;
+    background-color: rgba(6, 6, 214, 0.164) !important;
+}

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear ruta</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
+    
+
     <link rel="stylesheet" href="./css/addon.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
@@ -17,39 +19,43 @@
                       <tr class="table-active">
                         <th><pre>                    </pre></th>
                         <td><pre>                    </pre></td>
-                        <td style="text-align: right;"><strong>correo@gmail.com</strong></td>
-                        <td><button class="btn btn-info">Cerrar Sesion</button></td>
+                        <td id="email" style="text-align: right;"><strong>correo@gmail.com</strong></td>
+                        <td><button id="btn_close_session" class="btn btn-info">Cerrar Sesion</button></td>
                       </tr>
                       </tbody>
                       </table>
             </header>
-
-    <main class="container-fluid">
+<main class="container-fluid">
+    <form id="form" class="container-fluid">
         
             <div class="row">
-                <div class="form-group col-md-12">
-                    Foto:
-                    <div class="form-group col-md-12">
-                        <label for="photo"></label>
+                <div id="file" class="form-group col-md-12">
+                    <!-- <span class="badge badge-primary text-wrap">Foto</span> -->
+                    <div id="file" class="form-group col-md-12">
+                        
+                        <span>Foto</span>
+                        
                         <input type="file" class="form-control-file" name="" id="photo" placeholder="" aria-describedby="fileHelpId">
                     </div>
                 </div>
+               
+
             </div>
             <div class="row">
                 <div class="form-group col-md-12">
-                <label for="name">Nombre:</label>      
+                <label for="name"> <span>Nombre</span></label>      
                 <input type="text" id="name" name="name" class="form-control" placeholder="Escribe el nombre de la empresa aqui">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    ida
+                    <span>Ida</span>
                     <div id="map_ida">
 
                     </div>
                 </div>
                 <div class="col-md-6">
-                    vuelta
+                    <span>Vuelta</span>
                     <div id="map_vuelta">
 
                     </div>
@@ -62,8 +68,8 @@
                 </div>
             </div>
         
+        </form>
     </main>
-
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>  
@@ -76,6 +82,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnZzdYNu8q7TN9PdX5XEmbJ2TIHYMC8cI"></script>
+    
+    
     <script src="./js/crearRutas.js" type="module"></script>
+    <script src="./js/notify.js"></script>
 </body>
 </html>

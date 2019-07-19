@@ -10,6 +10,8 @@ $(()=>{
     var reference_empresa = firebase.database().ref('rutas');
     var reference_file = firebase.storage().ref('rutas');
 
+    let make_maps = ()=>{
+
     map_ida = new google.maps.Map(document.getElementById('map_ida'), {
         center: default_center,
         zoom: zoom_map
@@ -21,12 +23,13 @@ $(()=>{
         zoom: zoom_map
         // styles: styles_map
     });
+    }
 
     var listeners_config = ()=>{
         map_ida.addListener('click', (event)=>{
 
-          console.log(event.latLng.lat());
-          console.log(event.latLng.lng());
+        //   console.log(event.latLng.lat());
+        //   console.log(event.latLng.lng());
   
           let new_marker = new google.maps.Marker(
             {position: {
@@ -54,7 +57,7 @@ $(()=>{
         var line = new google.maps.Polyline({
           path: coords_collec_ida,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: 'blue',
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
@@ -65,8 +68,8 @@ $(()=>{
   
         map_vuelta.addListener('click', (event)=>{
 
-            console.log(event.latLng.lat());
-            console.log(event.latLng.lng());
+            // console.log(event.latLng.lat());
+            // console.log(event.latLng.lng());
     
             let new_marker = new google.maps.Marker(
               {position: {
@@ -90,7 +93,7 @@ $(()=>{
           var line = new google.maps.Polyline({
             path: coords_collec_vuelta,
             geodesic: true,
-            strokeColor: '#FF0000',
+            strokeColor: 'green',
             strokeOpacity: 1.0,
             strokeWeight: 2
           });
@@ -98,8 +101,8 @@ $(()=>{
           line.setMap(map_vuelta);
     
           });
-          console.log(coords_collec_ida);
-          console.log(coords_collec_vuelta);
+        //   console.log(coords_collec_ida);
+        //   console.log(coords_collec_vuelta);
     }
 
     let photo_upload = (key)=>{
@@ -121,20 +124,23 @@ $(()=>{
         content_file.child(new_name)
                     .put(photo.files[0], meta_data)
                     .then((data)=>{
-                        console.log(data);
+                        // console.log(data);
                         return data.ref.getDownloadURL();
                     })
                     .then((url)=>{
                         
-                        console.log(url);
+                        // console.log(url);
 
                         let reference_temp = firebase.database().ref('rutas').child(key);
                         return reference_temp.update({img: url});
                     }).then(()=>{
-                        console.log('image was updated');
+                        // console.log('image was updated');
+                        $.notify("La imagen de la empresa fue añadida correctamente", "success");
+                        clean_parameters();
                     })
                     .catch((error)=>{
                         console.log(error);
+                        $.notify("No se ha podido registrar tu imagen, por favor contacta al administrador", "error");
                     });
         }
 
@@ -151,19 +157,57 @@ $(()=>{
         }).then((data)=>{
 
             photo_upload(key);
-
+            $.notify("La empresa fue creada con exito", "success");
         }).catch((error)=>{
             console.log(error);
+            $.notify("No se ha podido registrar tu empresa, por favor contacta al administrador", "error");
         });
     }
+
+    let clean_parameters = ()=>{
+        $('#form').trigger("reset");
+        // console.log('clean');
+        coords_collec_ida = [];
+        coords_collec_vuelta = [];
+        make_maps();
+    }
+
+    let verified_session = ()=>{
+        firebase.auth().onAuthStateChanged((user)=>{
+            if (user) {
+
+              $('#email').html(user.email);
+
+            } else {
+                // location = './index.html';
+            }
+        });
+    }
+
+    let log_out = (event)=>{
+        firebase.auth().signOut()
+        .then(()=>{
+            location="./index.html";
+        }).catch(()=>{
+
+        });
+    }
+
+    $('#btn_close_session').click((event)=>{
+        event.preventDefault();
+        clean_parameters();
+        log_out();
+    });
 
     $('#save').click(()=>{
         make_empresa_firebase();
     });
 
+    make_maps();
+    verified_session();
     listeners_config();
 
-    console.log(map_ida);
-    console.log(map_vuelta);
+    // console.log(map_ida);
+    // console.log(map_vuelta);
 
 })
