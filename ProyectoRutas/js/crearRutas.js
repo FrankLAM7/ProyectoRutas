@@ -1,5 +1,5 @@
 import {firebaseConfig, default_center} from './var.js';
-$(()=>{
+$(function(){
     firebase.initializeApp(firebaseConfig);
 
     var map_ida;
@@ -9,6 +9,7 @@ $(()=>{
     var coords_collec_vuelta = [];
     var reference_empresa = firebase.database().ref('rutas');
     var reference_file = firebase.storage().ref('rutas');
+    var imagenes = $('#imagenes');
 
     let make_maps = ()=>{
 
@@ -107,7 +108,8 @@ $(()=>{
 
     let photo_upload = (key)=>{
         
-        let photo = document.getElementById('photo');
+        // let photo = document.getElementById('photo');
+        let photo = document.getElementById('file_up');
         // console.log(photo.files);
         
         let storage = firebase.storage();
@@ -196,7 +198,8 @@ $(()=>{
     $('#btn_close_session').click((event)=>{
         event.preventDefault();
         clean_parameters();
-        log_out();
+        removeUpload();
+        // log_out();
     });
 
     $('#save').click(()=>{
@@ -209,5 +212,101 @@ $(()=>{
 
     // console.log(map_ida);
     // console.log(map_vuelta);
+    // seccion final
+
+
+    let input = document.getElementById('file_up');
+    let btn_remove = document.getElementById('remove_image');
+    let file_upload_b = document.getElementById('file-upload-btn');
+
+    file_upload_b.onclick = function () { 
+        $('.file-upload-input').trigger( 'click' );
+     };
+
+    input.onchange = function(){
+        readURL(this);
+    } 
+
+    btn_remove.onclick = function () {
+        removeUpload();
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+      
+          var reader = new FileReader();
+      
+          reader.onload = function(e) {
+            $('.image-upload-wrap').hide();
+      
+            $('.file-upload-image').attr('src', e.target.result);
+            $('.file-upload-content').show();
+      
+            $('.image-title').html(input.files[0].name);
+          };
+      
+          reader.readAsDataURL(input.files[0]);
+      
+        } else {
+          removeUpload();
+        }
+      }
+      
+      function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+
+        imagenes.html(`
+        <span>Foto</span>
+        <button id="file-upload-btn" class="file-upload-btn" type="button">Seleccionar archivo</button>
+      
+        <div class="image-upload-wrap">
+          <input class="file-upload-input" id="file_up" type='file'  accept="image/*" />
+          <div class="drag-text">
+            <h3>Arastra la imagen o presiona en Seleccionar imagen</h3>
+          </div>
+        </div>
+        <div class="file-upload-content">
+          <img class="file-upload-image" src="#" alt="your image" />
+          <div class="image-title-wrap">
+            <button id="remove_image" type="button" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+          </div>
+        </div>
+        `);
+
+        input = document.getElementById('file_up');
+    btn_remove = document.getElementById('remove_image');
+    file_upload_b = document.getElementById('file-upload-btn');
+
+    file_upload_b.onclick = function () { 
+        $('.file-upload-input').trigger( 'click' );
+     };
+
+    input.onchange = function(){
+        readURL(this);
+    } 
+
+    btn_remove.onclick = function () {
+        removeUpload();
+    }
+
+    $('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+  });
+      
+  $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+  });
+      }
+      
+      $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+      });
+          
+      $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+      });
+
 
 })

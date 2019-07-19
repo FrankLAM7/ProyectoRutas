@@ -31,12 +31,31 @@
             <div class="row">
                 <div id="file" class="form-group col-md-12">
                     <!-- <span class="badge badge-primary text-wrap">Foto</span> -->
-                    <div id="file" class="form-group col-md-12">
+                    <!-- <div id="file" class="form-group col-md-12">
                         
                         <span>Foto</span>
                         
                         <input type="file" class="form-control-file" name="" id="photo" placeholder="" aria-describedby="fileHelpId">
+                    </div> -->
+
+                    <div id="imagenes" class="file-upload form-group col-md-12">
+                        <span>Foto</span>
+                        <button id="file-upload-btn" class="file-upload-btn" type="button">Seleccionar archivo</button>
+                      
+                        <div class="image-upload-wrap">
+                          <input class="file-upload-input" id="file_up" type='file'  accept="image/*" />
+                          <div class="drag-text">
+                            <h3>Arastra la imagen o presiona en Seleccionar imagen</h3>
+                          </div>
+                        </div>
+                        <div class="file-upload-content">
+                          <img class="file-upload-image" src="#" alt="your image" />
+                          <div class="image-title-wrap">
+                            <button id="remove_image" type="button" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                          </div>
+                        </div>
                     </div>
+
                 </div>
                
 
