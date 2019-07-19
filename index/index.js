@@ -34,13 +34,7 @@ window.onload = () => {
   let verificarSesion = () => {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        Swal.fire({
-          position: "top-end",
-          type: "success",
-          title: "Se inicio la sesion",
-          showConfirmButton: false,
-          timer: 1500
-        });
+        
       } else {
       }
     });
