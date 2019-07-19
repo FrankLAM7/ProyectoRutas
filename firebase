@@ -1,0 +1,26 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAlR_vtL2AKSHUhvpCaRm_XMtlihfJvCag",
+    authDomain: "proyecto-rutas-de-buses.firebaseapp.com",
+    databaseURL: "https://proyecto-rutas-de-buses.firebaseio.com",
+    projectId: "proyecto-rutas-de-buses",
+    storageBucket: "proyecto-rutas-de-buses.appspot.com",
+    messagingSenderId: "43082014410",
+    appId: "1:43082014410:web:ba01ea5acab669ac"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+
+
+
+
