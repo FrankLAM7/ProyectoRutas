@@ -137,12 +137,26 @@ $(function(){
                         return reference_temp.update({img: url});
                     }).then(()=>{
                         // console.log('image was updated');
-                        $.notify("La imagen de la empresa fue añadida correctamente", "success");
+                        // $.notify("La imagen de la empresa fue añadida correctamente", "success");
+                        Swal.fire({
+                            title: '',
+                            text: 'La imagen de la empresa fue añadida correctamente',
+                            type: 'success',
+                            confirmButtonText: false,
+                            timer:1000
+                          })  
                         clean_parameters();
                     })
                     .catch((error)=>{
                         console.log(error);
-                        $.notify("No se ha podido registrar tu imagen, por favor contacta al administrador", "error");
+                        // $.notify("No se ha podido registrar tu imagen, por favor contacta al administrador", "error");
+                        Swal.fire({
+                            title: '',
+                            text: 'No se ha podido registrar tu imagen, por favor contacta al administrador',
+                            type: 'error',
+                            confirmButtonText: false,
+                            timer:1000
+                          }) 
                     });
         }
 
@@ -159,10 +173,24 @@ $(function(){
         }).then((data)=>{
 
             photo_upload(key);
-            $.notify("La empresa fue creada con exito", "success");
+            // $.notify("La empresa fue creada con exito", "success");
+            Swal.fire({
+                title: '',
+                text: 'La empresa fue creada con exito',
+                type: 'success',
+                confirmButtonText: false,
+                timer:1000
+              }) 
         }).catch((error)=>{
             console.log(error);
-            $.notify("No se ha podido registrar tu empresa, por favor contacta al administrador", "error");
+            // $.notify("No se ha podido registrar tu empresa, por favor contacta al administrador", "error");
+            Swal.fire({
+                title: '',
+                text: 'No se ha podido registrar tu empresa, por favor contacta al administrador',
+                type: 'error',
+                confirmButtonText: false,
+                timer:1000
+              })
         });
     }
 
@@ -172,6 +200,7 @@ $(function(){
         coords_collec_ida = [];
         coords_collec_vuelta = [];
         make_maps();
+        removeUpload();
     }
 
     let verified_session = ()=>{
