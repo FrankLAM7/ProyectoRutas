@@ -12,13 +12,7 @@ window.onload = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        Swal.fire({
-          position: "top-end",
-          type: "success",
-          title: "Se inicio la sesion",
-          showConfirmButton: false,
-          timer: 1000
-        });
+         
       })
       .catch(() => {
         Swal.fire({
