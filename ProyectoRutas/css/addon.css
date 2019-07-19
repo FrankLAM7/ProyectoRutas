@@ -1,0 +1,16 @@
+*{
+    /* border: 1px solid red; */
+}
+
+#map_ida {
+    height: 400px;
+}
+
+#map_vuelta{
+    height: 400px;
+}
+html, body, form {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

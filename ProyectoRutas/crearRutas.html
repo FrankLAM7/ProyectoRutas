@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crear ruta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/addon.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    
+        <header>
+                <table class="table table-hover">
+                    <tbody>
+                      <tr class="table-active">
+                        <th><pre>                    </pre></th>
+                        <td><pre>                    </pre></td>
+                        <td style="text-align: right;"><strong>correo@gmail.com</strong></td>
+                        <td><button class="btn btn-info">Cerrar Sesion</button></td>
+                      </tr>
+                      </tbody>
+                      </table>
+            </header>
+
+    <main class="container-fluid">
+        
+            <div class="row">
+                <div class="form-group col-md-12">
+                    Foto:
+                    <div class="form-group col-md-12">
+                        <label for="photo"></label>
+                        <input type="file" class="form-control-file" name="" id="photo" placeholder="" aria-describedby="fileHelpId">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                <label for="name">Nombre:</label>      
+                <input type="text" id="name" name="name" class="form-control" placeholder="Escribe el nombre de la empresa aqui">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    ida
+                    <div id="map_ida">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    vuelta
+                    <div id="map_vuelta">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col mt-3 col-md-12">
+                    <button id="save" type="button" class="btn btn-block btn-primary">Registrar</button>
+                </div>
+            </div>
+        
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-storage.js"></script>
+    
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnZzdYNu8q7TN9PdX5XEmbJ2TIHYMC8cI"></script>
+    <script src="./js/crearRutas.js" type="module"></script>
+</body>
+</html>
