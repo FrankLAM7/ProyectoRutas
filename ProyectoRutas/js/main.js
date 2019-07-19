@@ -2,6 +2,7 @@ import { firebaseConfig } from './variables.js';
 
 window.onload = () => {
     firebase.initializeApp(firebaseConfig);
+    let refUsuarios = firebase.database().ref("usuarios");
 
     let cerrarSesion =(e)=>{
         e.preventDefault();
@@ -22,31 +23,43 @@ window.onload = () => {
                 $("#btnRegistrar").hide();
                 $("#btnIniciarSesion").hide();
                 $("#btnCerrarSesion").show();
+                $("#correoUsuario").html(user.email);
 
                 //VERIFICAR SI USUARIO YA ESTABA REGISTRADO EN LA
                 //BASE DE DATOS EN TIEMPO REAL PARA CREARLO O NO CREARLO
-                // refUsuarios.on("value",(dataSnapshot) =>{
-                //     let existe = dataSnapshot.hasChild(user.uid);
-                //     if(!existe){
-                //         //crear al usuario en la realtimeData
-                //         refUsuarios.child(user.uid).set({
-                //             email: user.email
-                //         }).then(()=>{
-                //             $.notify("Usuario registrado correctamente","success");
-                //         });
-                //     }else{
-                //     }
-                // });
+                refUsuarios.on("value", (dataSnapshot) => {
+                    let existe = dataSnapshot.hasChild(user.uid);                    
+                    if (!existe) {
+                        //crear al usuario en la realtimeData
+                        refUsuarios.child(user.uid).set({
+                            email: user.email,
+                            perfil: $("#inputPerfil").val()
+                        }).then(() => {
+                            $.notify("Usuario registrado correctamente", "success");
+                        });
+                    } else {
+                        refUsuarios.once("value",dataSnapshot =>{
+
+                            let data = dataSnapshot.child(user.uid).val();
+                            console.log(data);
+                            if(data.perfil !="Administrador"){
+                                $("#btnCrearRutas").addClass("disabled");
+                                $("#btnCrearRutas>*").addClass("hidden")
+                            }
+                        });
+                    }
+
+                });
 
 
             } else {
                 // User is signed out.
                 console.log("No habia una sesion iniciada o el usuario cerró sesion");
-                //location = "./index.html";
-                // $("#btnUsuario").html("Iniciar Sesion");
-                // $("#btnRegistrar").show();
-                // $("#btnIniciarSesion").show();
-                // $("#btnCerrarSesion").hide();
+
+                $("#btnUsuario").html("Iniciar Sesion");
+                $("#btnRegistrar").show();
+                $("#btnIniciarSesion").show();
+                $("#btnCerrarSesion").hide();
             }
         });
     }
@@ -62,7 +75,7 @@ window.onload = () => {
     $("#btnVerRutas").click(()=>{
         console.log("click");
         
-        location = "./verRutas.html";
+        location = "./listasempresas.html";
     });
     /**
     * Boton para cerrar sesion

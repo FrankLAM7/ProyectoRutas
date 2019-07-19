@@ -1,6 +1,9 @@
 html,body {
     height: 100%;
 }
+body{
+    background-image: linear-gradient(120deg,#3498db,#8e44ad);
+}
 .indexBotones{
     height: 300px;
     width: 300px;
@@ -10,4 +13,7 @@ html,body {
 .jumbotron{
     padding-top: 64px !important;
     padding-bottom: 64px !important;
+}
+#princi{
+    border-radius: 40px;
 }

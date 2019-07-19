@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-w6tc0TXjTUnYHwVwGgnYyV12wbRoJQo9iMlC2KdkdmVvntGgzT9jvqNEF/uKaF4m" crossorigin="anonymous">
-    <title>Document</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-w6tc0TXjTUnYHwVwGgnYyV12wbRoJQo9iMlC2KdkdmVvntGgzT9jvqNEF/uKaF4m" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css">
+        <title>Document</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
@@ -20,7 +21,7 @@
                     <td>
                         <pre>                    </pre>
                     </td>
-                    <td style="text-align: right;"><strong>correo@gmail.com</strong></td>
+                    <td style="text-align: right;"><strong class="h3 text-white" id="correoUsuario">correo@gmail.com</strong></td>
                     <td><button id="btnCerrarSesion" class="btn btn-info">Cerrar Sesion</button></td>
                 </tr>
             </tbody>
@@ -28,13 +29,21 @@
     </header>
 
     <main class="container">
-        <div class="jumbotron mt-5">
+        <div class="jumbotron mt-5" id="princi">
             <div class="d-flex justify-content-around">
-                <div id="btnVerRutas" class="indexBotones d-flex justify-content-center align-items-center btn btn-secondary">
-                    <a>VER RUTAS</a>
+                <div class="d-flex justify-content-center">
+                    <strong>VER RUTAS</strong>
+                    <div id="btnVerRutas"
+                        class="indexBotones d-flex justify-content-center align-items-center btn btn-secondary">
+                        <img src="./img/route-solid.svg" alt="">
+                    </div>
                 </div>
-                <div id="btnCrearRutas" class="indexBotones d-flex justify-content-center align-items-center btn btn-secondary">
-                    <a>CREAR RUTAS</a>
+                <div class="d-flex justify-content-center">
+                    <strong>CREAR RUTAS</strong>
+                    <div id="btnCrearRutas"
+                        class="indexBotones d-flex justify-content-center align-items-center btn btn-secondary">
+                        <img src="./img/plus-solid.svg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,6 +65,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF6h6iV5debP_hJeE4GVWWArYEgNdiahc"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="./js/notify.js"></script>
     <script src="./js/main.js" type="module"></script>
 
